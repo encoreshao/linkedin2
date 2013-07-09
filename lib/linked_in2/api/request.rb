@@ -14,17 +14,17 @@ module LinkedIn2
       end
 
       protected
-        def request(verb, path, opts={}, &block)
+        def request(verb, path, opts={})
           reise_authorized?
 
-          response = @client.token.request(verb, path, opts, &block)
+          response = @client.token.request(verb, path, opts)
           raise_errors(response)
           response.body
         end
 
 
         def get(path, options={})
-          request(:get, "#{API_PATH}#{path}", DEFAULT_HEADERS.merge(options), &block)
+          request(:get, "#{API_PATH}#{path}", DEFAULT_HEADERS.merge(options))
         end
 
         def post(path, body='', options={})
@@ -44,7 +44,7 @@ module LinkedIn2
         end
 
         def delete(path, options={})
-          request(:delete, "#{API_PATH}#{path}", DEFAULT_HEADERS.merge(options), &block)
+          request(:delete, "#{API_PATH}#{path}", DEFAULT_HEADERS.merge(options))
         end
 
         def reise_authorized?
