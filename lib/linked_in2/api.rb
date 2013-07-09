@@ -1,7 +1,7 @@
 module LinkedIn2
   module Api
-    autoload :QueryMethods,  "linkedin2/api/query_methods"
-    autoload :UpdateMethods, "linkedin2/api/update_methods"
-    autoload :Request,       "linkedin2/api/request"
+    autoload :QueryMethods,  "linked_in2/api/query_methods"
+    autoload :UpdateMethods, "linked_in2/api/update_methods"
+    autoload :Request,       "linked_in2/api/request"
   end
 end
