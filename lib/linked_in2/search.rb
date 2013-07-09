@@ -2,7 +2,8 @@ module LinkedIn2
 
   module Search
     def search(options={}, type='people')
-
+      options = {format: 'json'}.merge(options)
+      
       path = "/#{type.to_s}-search"
 
       if options.is_a?(Hash)
