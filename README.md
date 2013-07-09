@@ -10,11 +10,11 @@ A Ruby wrapper for Linkedin API(OAuth2).It is based on {OAuth2 gem}[https://gith
 
 Config your api_key, api_secret and redrect_uri somewhere like development.rb.
 
-  Linkedin2::Config.api_key = "xnismshhjajak"
-  Linkedin2::Config.api_secret = "xnismshhjajakxnismshhjajakxnismshhjajak"
-  Linkedin2::Config.redirect_uri = "http://www.example.com/uas/linkedin_oauth2/callback"
+  LinkedIn2::Config.api_key = "xnismshhjajak"
+  LinkedIn2::Config.api_secret = "xnismshhjajakxnismshhjajakxnismshhjajak"
+  LinkedIn2::Config.redirect_uri = "http://www.example.com/uas/linkedin_oauth2/callback"
 
-Ok, now you are ready to enjoy it. LinkedIn has provided several ways to get your access token, and you can easily get it using Linkedin2.
+Ok, now you are ready to enjoy it. LinkedIn has provided several ways to get your access token, and you can easily get it using LinkedIn2.
 
 
 == API

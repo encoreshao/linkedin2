@@ -1,4 +1,4 @@
-module Linkedin2
+module LinkedIn2
   module Config
     
     def self.api_key=(val)

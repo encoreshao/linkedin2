@@ -1,7 +1,7 @@
 require 'cgi'
 require 'oauth2'
 
-module Linkedin2
+module LinkediIn2
 
   # The Weibo2::Client class
   class Client < OAuth2::Client
@@ -58,9 +58,9 @@ module Linkedin2
     # @option opts [FixNum] :max_redirects (5) maximum number of redirects to follow
     # @yield [builder] The Faraday connection builder 
     def initialize(opts={}, &block)
-      id = Linkedin2::Config.api_key
-      secret = Linkedin2::Config.api_secret
-      @redirect_uri = Linkedin2::Config.redirect_uri
+      id = LinkedIn2::Config.api_key
+      secret = LinkedIn2::Config.api_secret
+      @redirect_uri = LinkedIn2::Config.redirect_uri
       
       options = {:site          => "http://api.linkedin.com",
                  :authorize_url => "https://www.linkedin.com/uas/oauth2/authorization",
@@ -119,7 +119,7 @@ module Linkedin2
     #
     # @see http://tools.ietf.org/html/draft-ietf-oauth-v2-15#section-4.1
     def auth_code
-      @auth_code ||= Linkedin2::Strategy::AuthCode.new(self)
+      @auth_code ||= LinkedIn2::Strategy::AuthCode.new(self)
     end
     
     # The Resource Owner Password Credentials strategy
@@ -132,7 +132,7 @@ module Linkedin2
     # The Signed Request Strategy
     #
     def signed_request
-      @signed_request ||= Linkedin2::Strategy::SignedRequest.new(self)
+      @signed_request ||= LinkedIn2::Strategy::SignedRequest.new(self)
     end
     
     #
@@ -140,11 +140,11 @@ module Linkedin2
     #
     
     def query(options)
-      @query ||= Linkedin2::API::QueryMethods.new(self)
+      @query ||= LinkedIn2::API::QueryMethods.new(self)
     end
     
     def update(options)
-      @update ||= Linkedin2::API::UpdateMethods.new(self)
+      @update ||= LinkedIn2::API::UpdateMethods.new(self)
     end
     
   end

@@ -1,4 +1,4 @@
-module Linkedin2
+module LinkedIn2
   module Strategy
     class SignedRequest < OAuth2::Strategy::Base
       attr_reader :unsigned_request
