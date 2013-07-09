@@ -1,7 +1,7 @@
 require 'cgi'
 require 'oauth2'
 
-module LinkediIn2
+module LinkedIn2
 
   # The Weibo2::Client class
   class Client < OAuth2::Client
