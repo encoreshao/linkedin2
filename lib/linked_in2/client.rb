@@ -139,11 +139,11 @@ module LinkedIn2
     # APIs
     #
     
-    def query(options)
+    def query
       @query ||= LinkedIn2::API::QueryMethods.new(self)
     end
     
-    def update(options)
+    def update
       @update ||= LinkedIn2::API::UpdateMethods.new(self)
     end
     
