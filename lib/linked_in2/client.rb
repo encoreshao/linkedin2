@@ -7,7 +7,7 @@ module LinkedIn2
   class Client < OAuth2::Client
   
     attr_reader :redirect_uri
-    attr_accessor :token
+    attr_accessor :token, :default_profile_fields
     
     # Initializes a new Client from a signed_request
     #

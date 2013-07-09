@@ -1,5 +1,5 @@
 module LinkedIn2
-  module Api
+  module API
 
     class UpdateMethods < Request
       
