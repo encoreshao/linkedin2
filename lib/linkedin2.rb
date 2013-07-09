@@ -1,5 +1,5 @@
 module LinkedIn2
-  autoload :Api,      "linked_in2/api"
+  autoload :API,      "linked_in2/api"
   autoload :Strategy, "linked_in2/strategy"
   autoload :Client,   "linked_in2/client"
   autoload :Mash,     "linked_in2/mash"
