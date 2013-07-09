@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock', '~> 1.9'
   
   gem.authors = ["Encore Shao"]
-  gem.description = %q{Ruby wrapper for the LinkedIn2 API use oauth2}
+  gem.description = %q{A Ruby wrapper for Linkedin API(OAuth2)}
   gem.email = ['encore.shao@gmail.com']
   gem.files = `git ls-files`.split("\n")
   gem.homepage = 'http://github.com/encore.shao/linkedin2'

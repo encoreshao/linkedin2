@@ -6,4 +6,5 @@ module LinkedIn2
   autoload :Errors,   "linkedin2/errors"
   autoload :Search,   "linkedin2/search"
   autoload :Version,  "linkedin2/version"
+  autoload :Config,   "linkedin2/config"
 end
