@@ -1,7 +1,7 @@
 module LinkedIn2
   module Api
 
-    class UpdateMethods < Base
+    class UpdateMethods < Request
       
       def add_share(share)
         path = "/people/~/shares"

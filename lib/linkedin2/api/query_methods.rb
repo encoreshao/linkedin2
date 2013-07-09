@@ -1,7 +1,7 @@
 module LinkedIn2
   module Api
 
-    class QueryMethods < Base
+    class QueryMethods < Request
 
       def profile(options={})
         path = person_path(options)
