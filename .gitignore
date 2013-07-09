@@ -13,6 +13,7 @@
 .config
 .directory
 .rvmrc
+.ruby-version
 Desktop.ini
 Gemfile.lock
 Icon?
