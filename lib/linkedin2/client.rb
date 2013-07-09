@@ -1,3 +1,4 @@
+require 'cgi'
 require 'oauth2'
 
 module Linkedin2
