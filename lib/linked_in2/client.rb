@@ -5,9 +5,13 @@ module LinkedIn2
 
   # The Weibo2::Client class
   class Client < OAuth2::Client
-  
+    include Helpers::Request
+    include API::QueryMethods
+    include API::UpdateMethods
+    include Search
+
     attr_reader :redirect_uri
-    attr_accessor :token, :default_profile_fields
+    attr_accessor :access_token, :default_profile_fields
     
     # Initializes a new Client from a signed_request
     #
@@ -62,7 +66,7 @@ module LinkedIn2
       secret = LinkedIn2::Config.api_secret
       @redirect_uri = LinkedIn2::Config.redirect_uri
       
-      options = {:site          => "http://api.linkedin.com",
+      options = {:site          => "https://api.linkedin.com",
                  :authorize_url => "https://www.linkedin.com/uas/oauth2/authorization",
                  :token_url     => "https://www.linkedin.com/uas/oauth2/accessToken",
                  :raise_errors  => false,
@@ -85,9 +89,9 @@ module LinkedIn2
     # @return [AccessToken] the initalized AccessToken
     def get_token(params, access_token_opts={})
       params = params.merge(:parse => :json)
-      access_token_opts = access_token_opts.merge({:header_format => "OAuth2 %s", :param_name => "access_token"})
+      access_token_opts = access_token_opts.merge({:mode => :query, :param_name => "oauth2_access_token"})
       
-      @token = super(params, access_token_opts)
+      @access_token = super(params, access_token_opts)
     end
     
     # Initializes an AccessToken from a hash
@@ -96,11 +100,9 @@ module LinkedIn2
     # @return [AccessToken] the initalized AccessToken
     def get_token_from_hash(hash)
       access_token = hash.delete('access_token') || hash.delete(:access_token) || hash.delete('oauth_token') || hash.delete(:oauth_token)
-      opts = {:expires_at => hash["expires"] || hash[:expires],
-              :header_format => "OAuth2 %s",
-              :param_name => "access_token"}
+      opts = { :mode => :query, :param_name => "oauth2_access_token" }
       
-      @token = OAuth2::AccessToken.new(self, access_token, opts)
+      @access_token = OAuth2::AccessToken.new(self, access_token, opts)
     end
     
     # Refreshes the current Access Token
@@ -108,7 +110,7 @@ module LinkedIn2
     # @return [AccessToken] a new AccessToken
     # @note options should be carried over to the new AccessToken
     def refresh!(params={})
-      @token = token.refresh!(params)
+      @access_token = access_token.refresh!(params)
     end
    
     #
@@ -133,18 +135,6 @@ module LinkedIn2
     #
     def signed_request
       @signed_request ||= LinkedIn2::Strategy::SignedRequest.new(self)
-    end
-    
-    #
-    # APIs
-    #
-    
-    def query
-      @query ||= LinkedIn2::API::QueryMethods.new(self)
-    end
-    
-    def update
-      @update ||= LinkedIn2::API::UpdateMethods.new(self)
     end
     
   end

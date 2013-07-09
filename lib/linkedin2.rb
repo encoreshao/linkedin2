@@ -4,6 +4,7 @@ module LinkedIn2
   autoload :Client,   "linked_in2/client"
   autoload :Mash,     "linked_in2/mash"
   autoload :Errors,   "linked_in2/errors"
+  autoload :Helpers,  "linked_in2/helpers"
   autoload :Search,   "linked_in2/search"
   autoload :Version,  "linked_in2/version"
   autoload :Config,   "linked_in2/config"
