@@ -20,6 +20,17 @@ Ok, now you are ready to enjoy it. LinkedIn has provided several ways to get you
 == API
 
 You can find them in /lib/linkedin2/api/.Note that all methods 
+    
+    # Your API keys at https://www.linkedin.com/secure/developer
+    client = LinkedIn2::Client.new
+
+    client.get_token_from_hash({access_token: Authentication.first.token})
+
+    client.profile({fields: ['id']})
+
+    client.company({id: #{linkedin_id}, fields: ['id', 'name']})
+
+    client.search({keywords: 'Facebook'}, 'company') 
   
 == Copyright
 
