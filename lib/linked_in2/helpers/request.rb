@@ -51,11 +51,14 @@ module LinkedIn2
             data = Mash.from_json(response.body)
             raise LinkedIn::Errors::AccessDeniedError.new(data), "(#{data.status}): #{data.message}"
           when 404
-            raise LinkedIn::Errors::NotFoundError, "(#{response.error_code}): (#{response.code}): #{response.message}"
+            data = Mash.from_json(response.body)
+            raise LinkedIn::Errors::NotFoundError.new(data), "(#{data.error_code}): (#{response.status}): #{data.message}"
           when 500
-            raise LinkedIn::Errors::InformLinkedInError, "LinkedIn had an internal error. Please let them know in the forum. (#{response.status}): #{response.message}"
+            data = Mash.from_json(response.body)
+            raise LinkedIn::Errors::InformLinkedInError.new(data), "LinkedIn had an internal error. Please let them know in the forum. (#{data.error_code}): (#{data.status}): #{data.message}"
           when 502..503
-            raise LinkedIn::Errors::UnavailableError, "(#{response.error_code}): (#{response.status}): #{response.message}"
+            data = Mash.from_json(response.body)
+            raise LinkedIn::Errors::UnavailableError.new(data), "(#{data.error_code}): (#{data.status}): #{data.message}"
           end
         end
 

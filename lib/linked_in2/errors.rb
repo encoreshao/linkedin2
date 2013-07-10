@@ -12,8 +12,8 @@ module LinkedIn2
     class GeneralError           < LinkedIn2Error; end
     class AccessDeniedError      < LinkedIn2Error; end
 
-    class UnavailableError       < StandardError; end
-    class InformLinkedIn2Error    < StandardError; end
-    class NotFoundError          < StandardError; end
+    class UnavailableError       < LinkedIn2Error; end
+    class InformLinkedIn2Error    < LinkedIn2Error; end
+    class NotFoundError          < LinkedIn2Error; end
   end
 end
