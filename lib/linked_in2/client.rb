@@ -65,6 +65,7 @@ module LinkedIn2
       id = LinkedIn2::Config.api_key
       secret = LinkedIn2::Config.api_secret
       @redirect_uri = LinkedIn2::Config.redirect_uri
+      @default_profile_fields = ['id', 'first-name', 'last-name', 'maiden-name', 'industry', 'summary', 'specialties', 'picture-url']
       
       options = {:site          => "https://api.linkedin.com",
                  :authorize_url => "https://www.linkedin.com/uas/oauth2/authorization",
