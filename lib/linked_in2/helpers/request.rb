@@ -43,22 +43,22 @@ module LinkedIn2
           case response.status
           when 401
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::UnauthorizedError.new(response), "(#{data.status}): #{data.message}"
+            raise LinkedIn2::Errors::UnauthorizedError.new(response), "(#{data.status}): #{data.message}"
           when 400
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::GeneralError.new(data), "(#{data.status}): #{data.message}"
+            raise LinkedIn2::Errors::GeneralError.new(data), "(#{data.status}): #{data.message}"
           when 403
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::AccessDeniedError.new(data), "(#{data.status}): #{data.message}"
+            raise LinkedIn2::Errors::AccessDeniedError.new(data), "(#{data.status}): #{data.message}"
           when 404
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::NotFoundError.new(data), "(#{data.error_code}): (#{response.status}): #{data.message}"
+            raise LinkedIn2::Errors::NotFoundError.new(data), "(#{data.error_code}): (#{response.status}): #{data.message}"
           when 500
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::InformLinkedInError.new(data), "LinkedIn had an internal error. Please let them know in the forum. (#{data.error_code}): (#{data.status}): #{data.message}"
+            raise LinkedIn2::Errors::InformLinkedInError.new(data), "LinkedIn had an internal error. Please let them know in the forum. (#{data.error_code}): (#{data.status}): #{data.message}"
           when 502..503
             data = Mash.from_json(response.body)
-            raise LinkedIn::Errors::UnavailableError.new(data), "(#{data.error_code}): (#{data.status}): #{data.message}"
+            raise LinkedIn2::Errors::UnavailableError.new(data), "(#{data.error_code}): (#{data.status}): #{data.message}"
           end
         end
 
